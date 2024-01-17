@@ -6,50 +6,39 @@ import 'package:flutter_application_2/tab_page.dart';
 import 'package:flutter_application_2/user_page.dart';
 import 'package:go_router/go_router.dart';
 
-final router = GoRouter(initialLocation: "/home", routes: <RouteBase>[
-  ShellRoute(
-    routes: [
-      GoRoute(
-        path: "/home",
-        pageBuilder: (context, state) =>
-            FadeTransitionPage(key: state.pageKey, child: const HomePage()),
-      ),
-      GoRoute(
-          path: "/user",
-          pageBuilder: (context, state) =>
-              FadeTransitionPage(key: state.pageKey, child: const UserPage())),
-      GoRoute(
-          path: "/setting",
-          pageBuilder: (context, state) => FadeTransitionPage(
-              key: state.pageKey, child: const SettingPage())),
-    ],
-    builder: (context, state, child) {
-      return TabPage(child: child);
-    },
-  ),
-  GoRoute(
-    path: "/detail",
-    builder: (context, state) => const DetailPage(),
-  )
-]);
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _sectionNavigatorKey = GlobalKey<NavigatorState>();
 
-/// A page that fades in an out.
-class FadeTransitionPage extends CustomTransitionPage<void> {
-  /// Creates a [FadeTransitionPage].
-  FadeTransitionPage({
-    required LocalKey key,
-    required Widget child,
-  }) : super(
-            key: key,
-            transitionsBuilder: (BuildContext context,
-                    Animation<double> animation,
-                    Animation<double> secondaryAnimation,
-                    Widget child) =>
-                FadeTransition(
-                  opacity: animation.drive(_curveTween),
-                  child: child,
-                ),
-            child: child);
-
-  static final CurveTween _curveTween = CurveTween(curve: Curves.easeIn);
-}
+// 指定tab中的一个子路由为启动时页面
+final router = GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: "/home",
+    routes: <RouteBase>[
+      StatefulShellRoute.indexedStack(
+          builder: (context, state, navigationShell) =>
+              TabPage(currentRoutePath: state.uri.path, child: navigationShell),
+          branches: [
+            StatefulShellBranch(navigatorKey: _sectionNavigatorKey, routes: [
+              GoRoute(
+                path: "/home",
+                builder: (context, state) => HomePage(),
+              ),
+            ]),
+            StatefulShellBranch(routes: [
+              GoRoute(
+                path: "/user",
+                builder: (context, state) => const UserPage(),
+              ),
+            ]),
+            StatefulShellBranch(routes: [
+              GoRoute(
+                path: "/setting",
+                builder: (context, state) => const SettingPage(),
+              ),
+            ]),
+          ]),
+      GoRoute(
+        path: "/detail",
+        builder: (context, state) => const DetailPage(),
+      )
+    ]);
