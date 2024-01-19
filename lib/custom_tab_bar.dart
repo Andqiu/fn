@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 
 class CustomTabBar extends StatefulWidget {
   final List<TabBarItemStateData> items;
@@ -23,50 +22,52 @@ class _CustomTabBarState extends State<CustomTabBar> {
     return Container(
         height: 52 + bottomSafeAreaHeight,
         color: Colors.white,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: widget.items
-                  .asMap()
-                  .entries
-                  .map((e) => Flexible(
-                          child: GestureDetector(
-                        onTap: () {
-                          int index = e.key;
-                          widget.onTap(index);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border(
-                              top: BorderSide(
-                                  color: Colors.black.withOpacity(0.2),
-                                  width: 0.5),
-                            ),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(0.0, 1.0), // 设置阴影偏移的位置
-                                blurRadius: 1.0, // 设置阴影的模糊程度
-                              ),
-                            ],
-                          ),
-                          child: Center(
-                            child: CustomTabBarItem(
-                                stateData: e.value,
-                                isSelected: widget.selectedIndex == e.key),
-                          ),
-                        ),
-                      )))
-                  .toList(),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border(
+              top: BorderSide(color: Colors.black.withOpacity(0.2), width: 0.5),
             ),
-            Container(
-              height: bottomSafeAreaHeight,
-              color: Colors.white,
-              child: null,
-            )
-          ],
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0xFFD6D6D6),
+                offset: Offset(0.0, 0.1), // 设置阴影偏移的位置
+                blurRadius: 6.0, // 设置阴影的模糊程度
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: widget.items
+                    .asMap()
+                    .entries
+                    .map((e) => Flexible(
+                            child: GestureDetector(
+                          onTap: () {
+                            int index = e.key;
+                            widget.onTap(index);
+                          },
+                          child: Container(
+                            color: Colors.white,
+                            child: Center(
+                              child: CustomTabBarItem(
+                                  stateData: e.value,
+                                  isSelected: widget.selectedIndex == e.key),
+                            ),
+                          ),
+                        )))
+                    .toList(),
+              ),
+              Container(
+                height: bottomSafeAreaHeight,
+                color: Colors.white,
+                child: null,
+              )
+            ],
+          ),
         ));
   }
 }
@@ -83,6 +84,8 @@ class CustomTabBarItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image(
+            width: 24,
+            height: 24,
             image: AssetImage(
                 isSelected ? stateData.selecteImageName : stateData.imageName)),
         const SizedBox(height: 3),

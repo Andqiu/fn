@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         highlightColor: Colors.transparent,
-        splashFactory: NoSplash.splashFactory,
+        splashFactory: NoSplash.splashFactory, // 全局隐藏水波纹效果
         colorScheme: ColorScheme.fromSeed(
             seedColor: const Color.fromARGB(255, 203, 195, 218)),
         useMaterial3: true,

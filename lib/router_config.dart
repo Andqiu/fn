@@ -21,7 +21,7 @@ final router = GoRouter(
             StatefulShellBranch(navigatorKey: _sectionNavigatorKey, routes: [
               GoRoute(
                 path: "/home",
-                builder: (context, state) => HomePage(),
+                builder: (context, state) => const HomePage(),
               ),
             ]),
             StatefulShellBranch(routes: [
@@ -39,6 +39,11 @@ final router = GoRouter(
           ]),
       GoRoute(
         path: "/detail",
-        builder: (context, state) => const DetailPage(),
+        builder: (context, state) {
+          ItemCallBack item = state.extra as ItemCallBack;
+          return DetailPage(
+            callBack: item,
+          );
+        },
       )
     ]);
