@@ -13,14 +13,18 @@ class BasePageState<T extends BasePage> extends State<T> {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Container(
-        color: const Color(0xF2F2F2FF),
+        color: const Color(0xFFFAFAFA),
         child: buildBody(context),
       ),
     );
   }
 
   AppBar? buildAppBar(BuildContext context) {
-    return AppBar(title: const Text("Home"));
+    return AppBar(
+        title: const Text(
+      "Home",
+      style: TextStyle(fontSize: 15),
+    ));
   }
 
   Widget? buildBody(BuildContext context) {

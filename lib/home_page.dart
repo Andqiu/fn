@@ -28,10 +28,8 @@ class _HomePageState extends BasePageState<HomePage> {
               GoRouter.of(context).push("/detail",
                   extra: ItemCallBack(
                       itemData: item,
-                      callBack: () {
-                        setState(() {
-                          print(11);
-                        });
+                      changeCallBack: () {
+                        setState(() {});
                       }));
             },
             child: Container(
@@ -61,6 +59,6 @@ class ItemModel {
 
 class ItemCallBack {
   final ItemModel? itemData;
-  final Function()? callBack;
-  ItemCallBack({this.itemData, this.callBack});
+  final Function()? changeCallBack;
+  ItemCallBack({this.itemData, this.changeCallBack});
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/detail_page.dart';
 import 'package:flutter_application_2/home_page.dart';
+import 'package:flutter_application_2/login/login_mobile_page.dart';
+import 'package:flutter_application_2/login/login_type_page.dart';
 import 'package:flutter_application_2/setting_page.dart';
 import 'package:flutter_application_2/tab_page.dart';
 import 'package:flutter_application_2/user_page.dart';
@@ -12,7 +14,7 @@ final _sectionNavigatorKey = GlobalKey<NavigatorState>();
 // 指定tab中的一个子路由为启动时页面
 final router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: "/home",
+    initialLocation: "/loginType",
     routes: <RouteBase>[
       StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) =>
@@ -45,5 +47,17 @@ final router = GoRouter(
             callBack: item,
           );
         },
-      )
+      ),
+      GoRoute(
+        path: "/loginType",
+        builder: (context, state) {
+          return const LoginTypePage();
+        },
+      ),
+      GoRoute(
+        path: "/loginMobile",
+        builder: (context, state) {
+          return const LoginMobilePage();
+        },
+      ),
     ]);

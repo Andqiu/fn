@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/base_page.dart';
 import 'package:flutter_application_2/home_page.dart';
-import 'package:provider/provider.dart';
 
 class DetailPage extends BasePage {
   final ItemCallBack? callBack;
@@ -30,7 +29,7 @@ class _DetailPageState extends BasePageState<DetailPage> {
               onPressed: () {
                 setState(() {
                   widget.callBack?.itemData?.name = "$name 被改变";
-                  Function()? fuc = widget.callBack?.callBack;
+                  Function()? fuc = widget.callBack?.changeCallBack;
                   fuc != null ? fuc() : null;
                 });
               },
