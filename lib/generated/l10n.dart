@@ -99,6 +99,46 @@ class S {
       args: [],
     );
   }
+
+  /// `登录`
+  String get login {
+    return Intl.message(
+      '登录',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入密码`
+  String get inputPwdPlaceholder {
+    return Intl.message(
+      '请输入密码',
+      name: 'inputPwdPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `请输入手机号码`
+  String get inputMobilePlaceholder {
+    return Intl.message(
+      '请输入手机号码',
+      name: 'inputMobilePlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `忘记密码`
+  String get forgetPwd {
+    return Intl.message(
+      '忘记密码',
+      name: 'forgetPwd',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

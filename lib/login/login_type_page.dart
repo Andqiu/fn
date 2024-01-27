@@ -19,14 +19,29 @@ class _LoginTypePageState extends BasePageState<LoginTypePage> {
 
   @override
   Widget? buildBody(BuildContext context) {
+    double top = MediaQuery.of(context).padding.top;
+    double left = 10;
     return Scaffold(
       body: Column(
         children: [
           Expanded(
               child: Container(
             color: Colors.white,
-            child: const Center(
-                child: Image(image: AssetImage("images/welcome_logo.png"))),
+            child: Stack(
+              children: [
+                Positioned(
+                  top: top,
+                  left: left,
+                  child: CloseButton(
+                    onPressed: () {
+                      GoRouter.of(context).go("/home");
+                    },
+                  ),
+                ),
+                const Center(
+                    child: Image(image: AssetImage("images/welcome_logo.png")))
+              ],
+            ),
           )),
           SizedBox(
             height: 298 + MediaQuery.of(context).padding.bottom,
@@ -139,7 +154,7 @@ class _LoginTypePageState extends BasePageState<LoginTypePage> {
                       child: IconButton(
                         padding: EdgeInsets.zero,
                         onPressed: () =>
-                            GoRouter.of(context).push("/loginMobile"),
+                            GoRouter.of(context).push("/loginType/loginMobile"),
                         icon: Image.asset("images/login_phone.png"),
                       ),
                     ),

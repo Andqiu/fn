@@ -3,6 +3,10 @@
     "facebookLoginBtn":"使用Facebook登錄",
     "loginWithOtherType":"或使用以下方式登入",
     "appProtocol":"同意《歡歌用戶服務協議》、《隱私聲明》",
-    "loginMobile":"手机登录"
-    
+    "loginMobile":"手机登录",
+    "login":"登录",
+    "inputPwdPlaceholder":"请输入密码",
+    "inputMobilePlaceholder":"请输入手机号码",
+    "forgetPwd":"忘记密码"
+
 }

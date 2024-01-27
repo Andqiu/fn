@@ -26,7 +26,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("同意《歡歌用戶服務協議》、《隱私聲明》"),
         "facebookLoginBtn":
             MessageLookupByLibrary.simpleMessage("使用Facebook登錄"),
+        "forgetPwd": MessageLookupByLibrary.simpleMessage("忘记密码"),
         "googleLoginBtn": MessageLookupByLibrary.simpleMessage("使用Google登錄"),
+        "inputMobilePlaceholder":
+            MessageLookupByLibrary.simpleMessage("请输入手机号码"),
+        "inputPwdPlaceholder": MessageLookupByLibrary.simpleMessage("请输入密码"),
+        "login": MessageLookupByLibrary.simpleMessage("登录"),
         "loginMobile": MessageLookupByLibrary.simpleMessage("手机登录"),
         "loginWithOtherType": MessageLookupByLibrary.simpleMessage("或使用以下方式登入")
       };

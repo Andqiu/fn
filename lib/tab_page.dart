@@ -21,7 +21,7 @@ class TabPage extends StatefulWidget {
         selecteImageName: "images/tab_live_A_sel.png",
         fontSize: 11,
         selectColor: Colors.red,
-        routePath: "/user"),
+        routePath: "/party"),
     TabBarItemStateData(
         color: Colors.black,
         name: "唱歌",
@@ -29,7 +29,7 @@ class TabPage extends StatefulWidget {
         selecteImageName: "images/tab_songs_A_sel.png",
         fontSize: 11,
         selectColor: Colors.red,
-        routePath: "/setting"),
+        routePath: "/sing"),
     TabBarItemStateData(
         color: Colors.black,
         name: "讯息",
@@ -37,7 +37,7 @@ class TabPage extends StatefulWidget {
         selecteImageName: "images/tab_mine_A_sel.png",
         fontSize: 11,
         selectColor: Colors.red,
-        routePath: "/user"),
+        routePath: "/chat"),
     TabBarItemStateData(
         color: Colors.black,
         name: "我的",
@@ -45,7 +45,7 @@ class TabPage extends StatefulWidget {
         selecteImageName: "images/tab_mine_B_sel.png",
         fontSize: 11,
         selectColor: Colors.red,
-        routePath: "/user"),
+        routePath: "/userCenter"),
   ];
   const TabPage(
       {super.key, required this.currentRoutePath, required this.child});
