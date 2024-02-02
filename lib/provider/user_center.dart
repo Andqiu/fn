@@ -3,21 +3,22 @@ import 'package:flutter_application_2/provider/user_info.dart';
 
 class UserCenter extends ChangeNotifier {
   bool _isLogin = false;
-  UserInfoModel? _userInfo;
+  UserInfo? _userInfo;
 
 // 是否登录
+  bool get isLogin => _isLogin;
   set isLogin(bool login) {
+    bool isChange = login == _isLogin;
     _isLogin = login;
-    notifyListeners();
+    if (isChange) {
+      notifyListeners();
+    }
   }
 
-  bool get isLogin => _isLogin;
-
 // 用户信息
-  set userInfo(UserInfoModel? userInfo) {
+  UserInfo? get userInfo => _userInfo;
+  set userInfo(UserInfo? userInfo) {
     _userInfo = userInfo;
     notifyListeners();
   }
-
-  UserInfoModel? get userInfo => _userInfo;
 }

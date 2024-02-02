@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/commone/gloab.dart';
 import 'package:flutter_application_2/provider/user_center.dart';
-import 'package:flutter_application_2/router_config.dart';
+import 'package:flutter_application_2/router/router_config.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +9,7 @@ import 'generated/l10n.dart';
 
 void main() {
   runApp(const EncoreApp());
+  Global.init().then((e) {});
 }
 
 class EncoreApp extends StatelessWidget {
@@ -18,7 +20,9 @@ class EncoreApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // 使用provider 保存UserCenter 全局状态
     return ChangeNotifierProvider(
-      create: (context) => UserCenter(),
+      create: (context) {
+        return UserCenter();
+      },
       // 使用AppHiddenKeyBoard 来处理全局点击空白处隐藏键盘
       child: AppHiddenKeyBoard(
         // app设置路由
