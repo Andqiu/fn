@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_2/bus/im_event_bus.dart';
 import 'package:flutter_application_2/commone/app_preferences.dart';
 import 'package:flutter_application_2/commone/gloab.dart';
+import 'package:flutter_application_2/models/ec_conversation.dart';
 import 'package:flutter_application_2/models/ec_message.dart';
 import 'package:flutter_application_2/provider/user_center.dart';
 import 'package:flutter_application_2/provider/user_info.dart';
@@ -130,11 +131,18 @@ class IMPlugin extends NativeMethodChannel {
         name: name,
         message: message,
         info: info,
-        isOffline: isOffline,
+        isOffline: isOffline ? 1 : 0,
         riskStatus: riskStatus,
         timestamp: timestamp);
     await Global.dbConfig?.insertMessage(msgData);
-    print(ECIMMessageEvent.eventBus);
+    bool? hasExit = await Global.dbConfig?.isExitConversation(uid);
+    if (hasExit != true) {
+      Map<String, dynamic> namDic = json.decode(info) as Map<String, dynamic>;
+      ECConversation conversation = ECConversation(
+          cid: uid, name: namDic['name'], avatar: namDic['avatar']);
+      await Global.dbConfig?.insertConversation(conversation);
+    }
+    // 通过bus通知到需要消息刷新的组件中
     ECIMMessageEvent.eventBus.fire(msgData);
   }
 }

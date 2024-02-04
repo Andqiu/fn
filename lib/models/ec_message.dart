@@ -9,7 +9,7 @@ class ECMessage {
   int? timestamp;
   String? message;
   String? info;
-  bool? isOffline;
+  int? isOffline;
   int? msgId;
   int? riskStatus;
 
@@ -37,7 +37,7 @@ class ECMessage {
         timestamp: data['timestamp'] as int?,
         message: data['message'] as String?,
         info: data['info'] as String?,
-        isOffline: data['isOffline'] as bool?,
+        isOffline: data['isOffline'] as int?,
         msgId: data['msgId'] as int?,
         riskStatus: data['riskStatus'] as int?,
       );
@@ -73,7 +73,7 @@ class ECMessage {
     int? timestamp,
     String? message,
     String? info,
-    bool? isOffline,
+    int? isOffline,
     int? msgId,
     int? riskStatus,
   }) {

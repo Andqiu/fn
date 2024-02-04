@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/pages/chat_page.dart';
+import 'package:flutter_application_2/pages/conversation_list_page.dart';
 import 'package:flutter_application_2/pages/detail_page.dart';
 import 'package:flutter_application_2/pages/home_page.dart';
 import 'package:flutter_application_2/pages/login/login_mobile_page.dart';
@@ -48,7 +48,7 @@ final router = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(
             path: "/chat",
-            builder: (context, state) => const ChatPage(),
+            builder: (context, state) => const ConversationListPage(),
           ),
         ]),
         StatefulShellBranch(routes: [
